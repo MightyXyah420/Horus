@@ -11,4 +11,9 @@ public class ScoreCard {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private long id;
 
+    private int limbShotsA;
+    private int limbShotsB;
+    private int bodyShotsA;
+    private int bodyShotsB;
+
 }

@@ -11,13 +11,16 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
+import org.springframework.lang.NonNull;
+
 @Entity
 public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private long id;
 
-    @Column
+    @Column(unique = true)
+    @NonNull
     private String username;
 
     @Column
