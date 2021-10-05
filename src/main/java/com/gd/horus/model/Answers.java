@@ -20,5 +20,5 @@ public class Answers {
     private Form form;
 
     @ElementCollection
-    private List<String> questions=new ArrayList<String>();
+    private List<String> answers=new ArrayList<String>();
 }

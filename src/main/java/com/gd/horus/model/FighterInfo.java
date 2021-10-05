@@ -17,6 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MapKeyColumn;
 
 import com.gd.horus.util.Doc;
+import com.gd.horus.util.FighterDto;
 
 @Entity
 public class FighterInfo {
@@ -29,10 +30,10 @@ public class FighterInfo {
     private String fullName;
 
     @Column
-    private String doc;
+    private String doc_num;
 
     @Enumerated(EnumType.ORDINAL)
-    private Doc status;
+    private Doc doc_type;
 
     @Column
     private String phone;
@@ -70,4 +71,88 @@ public class FighterInfo {
     @Column
     private int elo;
 
+    public FighterInfo (){
+        super();
+    } 
+    public FighterInfo(FighterDto data){
+        this.addr = data.getAddr();
+        this.doc_num = data.getDoc_num();
+        this.email = data.getEmail();
+        this.fullName = data.getFullName();
+        this.phone = data.getPhone();
+        this.rh = data.getRh();
+    }
+    /**
+     * @return the contact
+     */
+    public String getContact() {
+        return contact;
+    }
+    /**
+     * @param contact the contact to set
+     */
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
+    /**
+     * @return the insurance
+     */
+    public Insurance getInsurance() {
+        return insurance;
+    }
+    /**
+     * @param insurance the insurance to set
+     */
+    public void setInsurance(Insurance insurance) {
+        this.insurance = insurance;
+    }
+    /**
+     * @return the faults
+     */
+    public int getFaults() {
+        return faults;
+    }
+    /**
+     * @param faults the faults to set
+     */
+    public void setFaults(int faults) {
+        this.faults = faults;
+    }
+    /**
+     * @return the sessions
+     */
+    public int getSessions() {
+        return sessions;
+    }
+    /**
+     * @param sessions the sessions to set
+     */
+    public void setSessions(int sessions) {
+        this.sessions = sessions;
+    }
+    /**
+     * @return the wars
+     */
+    public int getWars() {
+        return wars;
+    }
+    /**
+     * @param wars the wars to set
+     */
+    public void setWars(int wars) {
+        this.wars = wars;
+    }
+    /**
+     * @return the elo
+     */
+    public int getElo() {
+        return elo;
+    }
+    /**
+     * @param elo the elo to set
+     */
+    public void setElo(int elo) {
+        this.elo = elo;
+    }
+    
 }

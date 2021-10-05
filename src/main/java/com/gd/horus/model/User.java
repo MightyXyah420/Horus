@@ -26,9 +26,58 @@ public class User {
     @Column
     private String password;
 
-    @OneToOne
-    private FighterInfo data;
-
     @ManyToMany
-    private Set<Role> authorities;
+    private Set<Role> authorities = new HashSet<>();
+
+    /**
+     * @return the username
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * @param username the username to set
+     */
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    /**
+     * @return the password
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * @param password the password to set
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    /**
+     * @return the authorities
+     */
+    public Set<Role> getAuthorities() {
+        return authorities;
+    }
+
+    /**
+     * @param authorities the authorities to set
+     */
+    public void setAuthorities(Set<Role> authorities) {
+        this.authorities = authorities;
+    }
+
+    public void addAuthority(Role role){
+        this.authorities.add(role);
+    }
+
+    public void revokeAuthority(Role role){
+        this.authorities.remove(role);
+    }
+
+
 }
