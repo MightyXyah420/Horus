@@ -7,7 +7,9 @@ public class FighterDto {
     private String phone;
     private String email;
     private String addr;
+    private String eps;
     private String rh;
+    private String contact;
     public FighterDto (){
         super();
     }
@@ -115,5 +117,18 @@ public class FighterDto {
     public void setRh(String rh) {
         this.rh = rh;
     }
+    public String getEps() {
+        return eps;
+    }
+    public void setEps(String eps) {
+        this.eps = eps;
+    }
+    public String getContact() {
+        return contact;
+    }
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
+    
     
 }
