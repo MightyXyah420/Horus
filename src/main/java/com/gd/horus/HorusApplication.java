@@ -11,7 +11,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import de.codecentric.boot.admin.server.config.EnableAdminServer;
+ 
+
 @SpringBootApplication
+@EnableAdminServer
 public class HorusApplication {
 
 	public static void main(String[] args) {
