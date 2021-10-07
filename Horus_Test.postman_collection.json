@@ -1,0 +1,42 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Horus_Test",
+		"_postman_id": "d623e7b7-ffa8-50be-c7d3-fec5440a4816",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "users/authenticate",
+			"request": {
+				"url": "localhost:8080/users/authenticate",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\":\"admin\",\n\t\"password\":\"password\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/users/test",
+			"request": {
+				"url": "localhost:8080/users/test",
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
