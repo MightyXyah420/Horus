@@ -7,6 +7,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.web.header.Header;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
@@ -62,6 +63,8 @@ public class TokenProvider implements Serializable {
                 .setSubject(authentication.getName())
                 .claim(AUTHORITIES_KEY, authorities)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
+                //.setPayload("the payload,  jajajajaj")
+                .setHeaderParam("CustomHeader", "CustomValue")
                 .setExpiration(new Date(System.currentTimeMillis() + TOKEN_VALIDITY*1000))
                 .signWith(SignatureAlgorithm.HS256, SIGNING_KEY)
                 .compact();

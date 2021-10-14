@@ -15,7 +15,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapKeyColumn;
+import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.gd.horus.util.Doc;
 import com.gd.horus.util.FighterDto;
 
@@ -25,12 +27,16 @@ public class FighterInfo {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private long id;
+
+    @JsonIgnore
+    @OneToOne(mappedBy = "data")
+    private Fighter fighter;
     
     @Column
     private String fullName;
 
     @Column
-    private String doc_num;
+    private String doc;
 
     @Enumerated(EnumType.ORDINAL)
     private Doc doc_type;
@@ -76,7 +82,7 @@ public class FighterInfo {
     } 
     public FighterInfo(FighterDto data){
         this.addr = data.getAddr();
-        this.doc_num = data.getDoc_num();
+        this.doc = data.getDoc();
         this.email = data.getEmail();
         this.fullName = data.getFullName();
         this.phone = data.getPhone();
@@ -153,6 +159,42 @@ public class FighterInfo {
      */
     public void setElo(int elo) {
         this.elo = elo;
+    }
+    public String getDoc() {
+        return doc;
+    }
+    public void setDoc(String doc) {
+        this.doc = doc;
+    }
+    public Fighter getFighter() {
+        return fighter;
+    }
+    public void setFighter(Fighter fighter) {
+        this.fighter = fighter;
+    }
+    public String getFullName() {
+        return fullName;
+    }
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+    public String getPhone() {
+        return phone;
+    }
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+    public String getEmail() {
+        return email;
+    }
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    public String getAddr() {
+        return addr;
+    }
+    public void setAddr(String addr) {
+        this.addr = addr;
     }
     
 }

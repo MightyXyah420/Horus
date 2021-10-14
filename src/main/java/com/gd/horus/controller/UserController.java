@@ -5,12 +5,16 @@ import java.io.IOException;
 import javax.naming.AuthenticationException;
 import javax.servlet.http.HttpServletResponse;
 
+import com.gd.horus.model.Fighter;
+import com.gd.horus.model.FighterInfo;
 import com.gd.horus.model.User;
 import com.gd.horus.security.TokenProvider;
+import com.gd.horus.service.FightersService;
 import com.gd.horus.service.UserService;
 import com.gd.horus.util.AuthToken;
 import com.gd.horus.util.Login;
 import com.gd.horus.util.NotAuthException;
+import com.gd.horus.util.RegisterDto;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,9 +44,29 @@ public class UserController {
     private UserService usrService;
 
     @Autowired
+    private FightersService fightersService;
+
+    @Autowired
     private TokenProvider jwtTokenUtil;
     @RequestMapping(value="/register", method = RequestMethod.POST)
-    public void register(){
+    public Fighter register(@RequestBody RegisterDto body){
+        
+        Fighter fighter = fightersService.cleanFighter(body);
+        if(fightersService.checkInfo(body.getDoc())){
+            System.out.println("entra if");
+            FighterInfo cleanSheet = fightersService.LinkFighter(body.getDoc(), fighter);
+            System.out.println("!!!!   "+cleanSheet.getPhone());
+            fighter.setData(cleanSheet);
+            return fightersService.writeFighter(fighter);
+        }else{
+            System.out.println("entra else");
+            FighterInfo cleanSheet = fightersService.cleanInfo();
+            cleanSheet.setDoc(body.getDoc());
+            cleanSheet.setFighter(fighter);
+            cleanSheet = fightersService.writeInfo(cleanSheet);
+            fighter.setData(cleanSheet);
+            return fightersService.writeFighter(fighter);
+        }
         
     }
 
@@ -78,9 +102,7 @@ public class UserController {
         log.info(auth.getCredentials().toString());
         log.info(auth.getDetails().toString());
         User retorno = usrService.getUserInfo(auth.getName());
-        
         if(retorno == null){
-            System.out.println("usuario no encontrado, LPM");
             throw new NotAuthException();
         }else{
             return retorno;

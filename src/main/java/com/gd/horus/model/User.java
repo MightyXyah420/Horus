@@ -12,6 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
+
+import com.gd.horus.util.RegisterDto;
+
 import javax.persistence.JoinColumn;
 
 import org.springframework.lang.NonNull;
@@ -88,5 +91,12 @@ public class User {
 
     public void revokeAuthority(Role role){
         this.authorities.remove(role);
+    }
+    public User(RegisterDto reg){
+        this.username = reg.getUsername();
+        this.password = reg.getPassword();
+    }
+    public User(){
+        super();
     }
 }

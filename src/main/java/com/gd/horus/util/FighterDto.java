@@ -2,7 +2,7 @@ package com.gd.horus.util;
 
 public class FighterDto {
     private String fullName;
-    private String doc_num;
+    private String doc;
     private String doc_type;
     private String phone;
     private String email;
@@ -16,17 +16,17 @@ public class FighterDto {
     //public FighterDto(){}
     /**
      * @param fullName
-     * @param doc_num
+     * @param doc
      * @param doc_type
      * @param phone
      * @param email
      * @param addr
      * @param rh
      */
-    public FighterDto(String fullName, String doc_num, String doc_type, String phone, String email, String addr,
+    public FighterDto(String fullName, String doc, String doc_type, String phone, String email, String addr,
             String rh) {
         this.fullName = fullName;
-        this.doc_num = doc_num;
+        this.doc = doc;
         this.doc_type = doc_type;
         this.phone = phone;
         this.email = email;
@@ -48,14 +48,14 @@ public class FighterDto {
     /**
      * @return the doc_num
      */
-    public String getDoc_num() {
-        return doc_num;
+    public String getDoc() {
+        return doc;
     }
     /**
-     * @param doc_num the doc_num to set
+     * @param doc the doc_num to set
      */
-    public void setDoc_num(String doc_num) {
-        this.doc_num = doc_num;
+    public void setDoc_num(String doc) {
+        this.doc = doc;
     }
     /**
      * @return the doc_type
